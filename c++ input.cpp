@@ -3,7 +3,6 @@
 #include <cstring>
 #include <fstream>
 #include "person.h"
-
 using namespace std;
 
 int numLines();
@@ -13,15 +12,10 @@ void printRecords(int numRecords, Person record[]);
 int main()
 {
   int numRecords;
-
   numRecords = numLines();
-
   Person record[numRecords];
-
   getRecords(numRecords, record);
-
   printRecords(numRecords, record);
-
   return 0;
 }
 
@@ -35,14 +29,10 @@ int numLines()
   while(!inData.eof())
   {
     getline(inData, line);
-    //cout << line << " " << endl;
     numRecords++;
-
   }
   numRecords--;
-  //cout << numRecords << endl;
   inData.close();
-
   return numRecords;
 }
 
