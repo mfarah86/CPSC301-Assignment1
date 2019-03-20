@@ -93,6 +93,7 @@ void customerEntry(string &name, float &amount)
   cin >> amount;
   cin.clear();
   name = first + " " + last;
+
 }
 
 void Deposit(PERSON *arr, const int N, const string custName, const float amount)
@@ -105,9 +106,17 @@ void Deposit(PERSON *arr, const int N, const string custName, const float amount
     if(name==custName)
     {
       arr[i].Balance = arr[i].Balance + amount;
+      cout << "New Balance: " << fixed << setprecision(2) << arr[i].Balance << endl;
+      break;
+    }
+    if(i == N-1)
+    {
+      if(custName != name)
+      {
+        cout << "Record Not Found..." << endl;
+      }
     }
   }
-
 }
 
 void FindRichest(const PERSON *arr, const int N)
@@ -122,7 +131,15 @@ void FindRichest(const PERSON *arr, const int N)
     {
       highest = amount;
     }
+  }
 
+  for(int i = 0; i < N ; i++)
+  {
+    if(highest==arr[i].Balance)
+    {
+      cout << "Highest Paid: " << arr[i].Name << " " << fixed << setprecision(2) << arr[i].Balance << endl;
+    }
+  }
 }
 
 void Display(PERSON *arr, const int N)
@@ -136,5 +153,12 @@ void Display(PERSON *arr, const int N)
 
 void NewCopy(PERSON *arr, const int N)
 {
-
+  ofstream outFile;
+  outFile.open("data.txt");
+  for(int i = 0; i < N ; i++)
+  {
+    outFile << arr[i].Name << " " << arr[i].Balance << endl;
+  }
+  outFile.close();
+  cout << "File Updated..." << endl;
 }
