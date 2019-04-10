@@ -3,8 +3,11 @@
 #include <string>
 #include <cstring>
 #include <fstream>
-#include "person.h"
 using namespace std;
+
+struct  Person {
+char  Name[20];
+float Balance; };
 
 int numLines();
 PERSON * readData(const int N);
